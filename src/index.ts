@@ -43,7 +43,7 @@ export class CloudwatchRetentionSetter extends Construct {
         source: ['aws.logs'],
         detailType: ['AWS API Call via CloudTrail'],
         detail: {
-          eventSource: ['logs.amazonaws.com '],
+          eventSource: ['logs.amazonaws.com'],
           eventName: ['CreateLogGroup'],
         },
       },
