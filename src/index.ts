@@ -1,3 +1,5 @@
+import * as path from 'path';
+
 import { Rule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -19,7 +21,7 @@ export class CloudwatchRetentionSetter extends Construct {
 
     const lambda = new Function(this, 'CloudwatchSetRetentionFunction', {
       handler: 'function.handler',
-      code: Code.fromAsset('lambda'),
+      code: Code.fromAsset(path.join(__dirname, '../lambda')),
       runtime: Runtime.PYTHON_3_9,
       architecture: Architecture.ARM_64,
       description:
