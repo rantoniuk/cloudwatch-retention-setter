@@ -9,8 +9,7 @@ client = boto3.client('logs')
 
 
 def handler(event, context):
-
-    log_group = event.detail.requestParameters.logGroupName
+    log_group = event['detail']['requestParameters']['logGroupName']
     logger.info("New AWS CloudWatch was created: %s", log_group)
 
     client.put_retention_policy(
