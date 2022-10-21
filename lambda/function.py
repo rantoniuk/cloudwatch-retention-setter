@@ -8,18 +8,18 @@ logger.setLevel(logging.INFO)
 client = boto3.client('logs')
 
 
-def handler(event):
+def handler(event, context):
 
-    logGroupName = event.detail.requestParameters.logGroupName
-    logger.info("New AWS CloudWatch was created: %s", logGroupName)
+    log_group = event.detail.requestParameters.logGroupName
+    logger.info("New AWS CloudWatch was created: %s", log_group)
 
     client.put_retention_policy(
-        logGroupName=logGroupName,
+        logGroupName=log_group,
         retentionInDays=int(os.environ.setdefault('RETENTION_DAYS', 180))
     )
 
     return {
-        'message': 'Retention policy set for: ' + logGroupName
+        'message': 'Retention policy set for: ' + log_group
     }
 
 
