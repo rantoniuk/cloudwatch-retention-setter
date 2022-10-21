@@ -12,13 +12,20 @@ def handler(event, context):
     log_group = event['detail']['requestParameters']['logGroupName']
     logger.info("New AWS CloudWatch was created: %s", log_group)
 
-    client.put_retention_policy(
+    response = client.put_retention_policy(
         logGroupName=log_group,
         retentionInDays=int(os.environ.setdefault('RETENTION_DAYS', 180))
     )
 
+    response_code = response['ResponseMetadata']['HTTPStatusCode']
+
+    if (response_code == 200):
+        logger.info("Retention policy updated for %s", log_group)
+    else:
+        logger.error(response)
+
     return {
-        'message': 'Retention policy set for: ' + log_group
+        'statusCode': response_code
     }
 
 
