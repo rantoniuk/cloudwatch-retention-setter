@@ -1,4 +1,4 @@
-const { awscdk } = require('projen');
+const { awscdk, ReleasableCommits } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Radek Antoniuk',
   authorAddress: 'radek.antoniuk@gmail.com',
@@ -12,6 +12,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // deps: [],                /* Runtime dependencies of this module. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
-  releasableCommits: awscdk.ReleasableCommits.onlyOfType(['feat', 'fix']),
+  releasableCommits: ReleasableCommits.onlyOfType(['feat', 'fix']),
 });
 project.synth();
