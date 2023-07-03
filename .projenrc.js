@@ -12,6 +12,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // deps: [],                /* Runtime dependencies of this module. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
-  releasableCommits: ReleasableCommits.onlyOfType(['feat', 'fix']),
+  releasableCommits: awscdk.ReleasableCommits.onlyOfType(['feat', 'fix']),
 });
 project.synth();
