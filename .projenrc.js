@@ -13,6 +13,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // deps: [],                /* Runtime dependencies of this module. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
+  publishToPypi: {
+    distName: 'rantoniuk.cloudwatch-retention-setter',
+    module: 'rantoniuk.cloudwatch_retention_setter',
+  },
   releasableCommits: ReleasableCommits.featuresAndFixes(),
 });
 project.synth();
