@@ -3,6 +3,7 @@ const { awscdk, ReleasableCommits } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Radek Antoniuk',
   authorAddress: 'radek.antoniuk@gmail.com',
+  majorVersion: 1,
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
   name: 'cloudwatch-retention-setter',
