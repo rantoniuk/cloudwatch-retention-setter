@@ -19,5 +19,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'rantoniuk.cloudwatch_retention_setter',
   },
   releasableCommits: ReleasableCommits.featuresAndFixes(),
+  depsUpgradeOptions: {
+    workflowOptions: {
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(["0 12 15 * *"]),
+    },
+  },
 });
 project.synth();
